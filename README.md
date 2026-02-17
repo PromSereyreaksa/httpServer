@@ -9,7 +9,6 @@
 I’m learning HTTP, TCP, and networking concepts while building this project. Key resources I’m following include:  
 
 - [MDN Web Docs – HTTP Guides](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides) – for understanding **HTTP requests, responses, headers, and the protocol flow**.  
-- [CodeCrafters – Build Your Own HTTP Server](https://app.codecrafters.io/courses/http-server/overview) – a hands-on challenge teaching how to build an HTTP server from scratch using **TCP primitives**, handle **GET/POST requests**, serve files, and manage **multiple concurrent connections**.
  
 
 ---
@@ -58,4 +57,5 @@ souHTTP builds on this protocol by **handling TCP connections directly** and **p
 ---
 
 © 2026 Prom Sereyreaksa
+
 
