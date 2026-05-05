@@ -19,17 +19,24 @@ const server = net.createServer((socket) => {
   console.log("Client connected");
 
   socket.on("data", (data) => {
-    const { path } = parseRequest(data);
+    // add request log
+    const start = Date.now();
+    const {method, path } = parseRequest(data);
     const { status, body } = getRouteResponse(path);
+    console.log(`[${new Date().toISOString()}] ${method} ${path}`);
 
-    const response = `HTTP/1.1 ${status} ${status === 404 ? "Not Found" : "OK"}\r
-Content-Type: text/plain\r
-Content-Length: ${body.length}\r
-\r
-${body}`;
+    const response = `HTTP/1.1 ${status} ${status === 404 ? "Not Found" : "OK"}\r\n` +
+`Content-Type: text/plain\r\n` +
+`Content-Length: ${Buffer.byteLength(body)}\r\n` +
+`\r\n` +
+body;
 
 
     socket.write(response);
+
+    // basic observability
+    const duration = Date.now() - start;
+    console.log (`-> ${status} (${duration}ms)`);
     socket.end();
   });
 });
